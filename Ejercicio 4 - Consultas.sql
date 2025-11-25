@@ -13,7 +13,7 @@ SELECT M.Descripcion, COUNT(R.ID_Reclamo) AS Cantidad_Reclamos
 FROM Reclamos R
 JOIN Motivos_Reclamos M
     ON R.ID_Motivo = M.ID_Motivo
-WHERE R.Fecha_Asignacion = NULL
+WHERE R.Fecha_Asignacion IS NULL
 GROUP BY M.Descripcion
 HAVING COUNT(R.ID_Reclamo) > 3
 ORDER BY Cantidad_Reclamos DESC;
