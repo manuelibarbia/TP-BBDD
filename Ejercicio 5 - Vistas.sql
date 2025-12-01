@@ -1,3 +1,4 @@
+-- Vista A --
 CREATE VIEW informacion_reclamos AS
 
 SELECT 
@@ -38,6 +39,7 @@ WHERE
     Cod_Arbol = 'ARB-015';
 GO
 
+-- Vista B --
 CREATE VIEW resumen_tareas_realizadas_tipo AS
 SELECT
     tt.Descripcion,
@@ -52,3 +54,13 @@ WHERE
     t.Fecha_Realizada IS NOT NULL  -- No incluir tareas no realizadas
 GROUP BY
     tt.Descripcion;
+
+-- Ejemplo B.1: Buscar y mostrar solo los tipos de tareas con más de 10 realizadas.
+SELECT *
+FROM resumen_tareas_realizadas_tipo
+WHERE Cantidad_Tareas_Realizadas > 10;
+
+-- Ejemplo B.2: Buscar y filtrar por un tipo de tarea especifico, 'Poda' en este caso.
+SELECT *
+FROM resumen_tareas_realizadas_tipo
+WHERE Descripcion = 'Poda';
